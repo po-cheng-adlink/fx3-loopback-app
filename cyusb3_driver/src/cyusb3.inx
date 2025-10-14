@@ -259,37 +259,6 @@ CYUSB3.sys
 HKR,,DriverGUID,,%CYUSB3.GUID%
 ;HKR,,DriverPowerPolicySetup,,%ENABLE_DRIVER_POWER_POLICY%
 
-;-------------- WDF Coinstaller installation
-[SourceDisksFiles]
-WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll=1 ; make sure the number matches with SourceDisksNames
-
-[DestinationDirs]
-CoInstaller_CopyFiles = 11
-
-[CYUSB3.NTamd64.CoInstallers]
-AddReg=CoInstaller_AddReg
-CopyFiles=CoInstaller_CopyFiles
-
-[CYUSB3.NTx86.CoInstallers]
-AddReg=CoInstaller_AddReg
-CopyFiles=CoInstaller_CopyFiles
-
-[CoInstaller_CopyFiles]
-WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll
-
-[CoInstaller_AddReg]
-HKR,,CoInstallers32,0x00010000, "WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll,WdfCoInstaller"
-
-[CYUSB3.NTamd64.Wdf]
-KmdfService = CYUSB3, CYUSB3_wdfsect
-
-[CYUSB3.NTx86.Wdf]
-KmdfService = CYUSB3, CYUSB3_wdfsect
-
-[CYUSB3_wdfsect]
-KmdfLibraryVersion = $KMDFVERSION$
-
-
 [Strings]
 CYUSB3_Provider    = "Cypress"
 CYUSB3_Company     = "Cypress Semiconductor Corporation"
